@@ -21,7 +21,6 @@ function showToast(params: any[]) {
   uToastRef.value?.show({
     message: params[0],
     position: "bottom",
-    duration: 2000,
   });
 }
 </script>
