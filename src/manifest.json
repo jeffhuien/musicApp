@@ -187,11 +187,11 @@
             },
             "splashscreen" : {
                 "android" : {
-                    "xxhdpi" : "C:/Users/gaogao/Desktop/1.9.png"
+                    "xxhdpi" : "unpackage/res/img/1.9.png"
                 },
                 "ios" : {
                     "iphone" : {
-                        "portrait-896h@3x" : "C:/Users/gaogao/Desktop/1.9.png"
+                        "portrait-896h@3x" : "unpackage/res/img/1.9.png"
                     },
                     "ipad" : {
                         "portrait-1366h@2x" : ""
@@ -203,10 +203,18 @@
             },
             "sdkConfigs" : {
                 "ad" : {}
+            },
+            "android" : {
+                "minSdkVersion" : 28
             }
         },
         "uniStatistics" : {
             "enable" : true
+        },
+        "nvueLaunchMode" : "",
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : false,
+            "waiting" : false
         }
     },
     "h5" : {
@@ -275,5 +283,11 @@
         "uniStatistics" : {
             "enable" : false
         }
+    },
+    "splashscreen" : {
+        "alwaysShowBeforeRender" : false,
+        "autoclose" : false,
+        "waiting" : false,
+        "delay" : 0
     }
 }

@@ -57,8 +57,8 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-4000820240401001",
     "@uni-helper/unocss-preset-uni": "^0.2.8",
     "dayjs": "^1.11.10",
+    "pinia": "^2.1.7",
     "sass": "^1.75.0",
-    "uview-plus": "^3.2.13",
     "vue": "^3.4.23",
     "vue-i18n": "^9.13.1"
   },
