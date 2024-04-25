@@ -57,7 +57,9 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-4000820240401001",
     "@uni-helper/unocss-preset-uni": "^0.2.8",
     "dayjs": "^1.11.10",
-    "pinia": "^2.1.7",
+    "lodash": "^4.17.21",
+    "pinia": "2.0.36",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "sass": "^1.75.0",
     "vue": "^3.4.23",
     "vue-i18n": "^9.13.1"
@@ -69,6 +71,7 @@
     "@dcloudio/uni-stacktracey": "3.0.0-4000820240401001",
     "@dcloudio/vite-plugin-uni": "3.0.0-4000820240401001",
     "@iconify-json/tabler": "^1.1.110",
+    "@types/lodash": "^4.17.0",
     "@unocss/preset-uno": "^0.59.4",
     "@unocss/preset-wind": "^0.59.4",
     "@vue/runtime-core": "^3.4.23",

@@ -1,22 +1,28 @@
 <script setup lang="ts">
-function a() {
-  // uni.showToast({
-  //   title: "加载成功标题",
-  //   duration: 2000,
-  //   position: "bottom",
-  // });
-  uni.showLoading({
-    title: "加载中3434",
-  });
+import type { SongUrlType } from "#/song/songUrl";
+import { SongApi } from "@/Api";
 
-  setTimeout(function () {
-    uni.hideLoading();
-  }, 4000);
+function a(i: string) {
+  uni.showToast({
+    title: i.toString(),
+    duration: 2000,
+    position: "bottom",
+  });
 }
+
+let data = ref<SongUrlType>();
+onMounted(async () => {
+  data.value = await SongApi.getSongUrl("28949444");
+});
 </script>
 
 <template>
-  <text @click="a">1212342</text>
+  <view class="overflow-hidden overflow-y-auto h-full flex flex-col p-5">
+    <text class="break-all" v-for="(i, k) in data?.data[0]" :key="k" @click="a(i)">
+      <text class="text-lightblue">{{ k }}</text>
+      <text>: {{ i }}</text>
+    </text>
+  </view>
 </template>
 
 <style scoped lang="scss"></style>
