@@ -1,16 +1,32 @@
+import type { G_RequestOptions } from "#/tools";
 import { env, store } from "@/utils";
 
 class GHttp {
-  private config: UniApp.RequestOptions;
+  private config: G_RequestOptions;
   private baseUrl = env.VITE_API_URL;
-  constructor(params: UniApp.RequestOptions) {
+  constructor(params: G_RequestOptions) {
     this.config = { ...params };
     this.baseUrl += params.url;
   }
 
-  public async request<T>(params: UniApp.RequestOptions) {
+  public async request<T>(params: G_RequestOptions) {
     this.config = { ...params };
-    this.config.url = this.baseUrl + params.url;
+    let a = params?.params;
+    if (params.baseURL) {
+      this.config.url = env.VITE_API_URL += params.baseURL;
+      delete params.baseURL;
+    }
+    let u = "?";
+    if (a) {
+      for (const i in a) {
+        u += `${i}=${a[i]}&`;
+      }
+      u = u.substring(0, u.length - 1);
+    }
+
+    this.config.url = this.baseUrl + params.url + u;
+    console.log(this.config.url);
+
     if (this.config?.method ?? "post" == "post") {
       this.config.header = {
         ...params.header,
@@ -21,9 +37,8 @@ class GHttp {
     return new Promise<T>((resolve, reject) => {
       uni.request({
         ...this.config,
-        timeout: 5000,
 
-        success(response) {
+        success(response: any) {
           const res = response;
           // 根据返回的状态码做出对应的操作
           //获取成功
@@ -62,7 +77,7 @@ class GHttp {
             }
           }
         },
-        fail(err) {
+        fail(err: { errMsg: string | string[] }) {
           console.log(err);
           if (err.errMsg.indexOf("request:fail") !== -1) {
             uni.showToast({

@@ -8,8 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+src/uni_modules/
 .DS_Store
-dist
 *.local
 
 # Editor directories and files

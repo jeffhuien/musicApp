@@ -1,6 +1,5 @@
-// import { getPlayUrl } from "#/song/get-url";
-// import { songInfo } from "#/song/songInfo";
-import type { SongUrlType } from "#/song/songUrl";
+import type { getPlayUrl } from "#/song/get-url";
+import type { songInfo } from "#/song/songInfo";
 import GHttp from "@/plugins/request";
 
 class Song extends GHttp {
@@ -9,8 +8,20 @@ class Song extends GHttp {
   }
 
   public async getSongUrl(id: number | string) {
-    return this.request<SongUrlType>({
+    return this.request<getPlayUrl>({
       url: `/url/v1?id=${id}&level=standard`,
+    });
+  }
+
+  public async check(id: number | string) {
+    return this.request<{ success: boolean }>({
+      url: `/check/music?id=${id}`,
+    });
+  }
+
+  public async getSongDetail(id: number | string) {
+    return this.request<songInfo>({
+      url: `/detail?ids=${id}`,
     });
   }
 }

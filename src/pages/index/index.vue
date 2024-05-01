@@ -1,28 +1,66 @@
 <script setup lang="ts">
-import type { SongUrlType } from "#/song/songUrl";
 import { SongApi } from "@/Api";
 
-function a(i: string) {
-  uni.showToast({
-    title: i.toString(),
-    duration: 2000,
-    position: "bottom",
-  });
+let activeIndex = 0;
+function tabClick(index: number, item: any) {
+  console.log("tabClick", index, item);
+}
+// 标签切换事件
+function tabChange(index: number, item: any) {
+  console.log("tabChange", index, item);
 }
 
-let data = ref<SongUrlType>();
-onMounted(async () => {
-  data.value = await SongApi.getSongUrl("28949444");
-});
+SongApi.getSongUrl("1436792531");
+const ls = ref([
+  {
+    name: "推荐",
+    id: 1,
+  },
+  {
+    name: "最新",
+    id: 2,
+  },
+]);
 </script>
 
 <template>
-  <view class="overflow-hidden overflow-y-auto h-full flex flex-col p-5">
-    <text class="break-all" v-for="(i, k) in data?.data[0]" :key="k" @click="a(i)">
-      <text class="text-lightblue">{{ k }}</text>
-      <text>: {{ i }}</text>
-    </text>
+  <view class="size-screen flex flex-col px-1 overflow-hidden box-border">
+    <view class="flex-1 size-full">
+      <y-tabs class="" :statusbar="false" :shrink="true" :swipeable="true" v-model="activeIndex" @click="tabClick" @change="tabChange">
+        <y-tab class="y-tab-virtual" v-for="i in ls" :key="i.id" :title="i.name">
+          <view>
+            <g-search></g-search>
+          </view>
+        </y-tab>
+      </y-tabs>
+    </view>
   </view>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+:deep(.uni-navbar view) {
+  border: none !important;
+}
+
+:deep(.y-tabs) {
+  height: 100%;
+  width: 100%;
+}
+:deep(.y-tabs .y-tabs__content) {
+  height: 90%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+:deep(.y-tabs__wrap) {
+  height: 10% !important;
+}
+// :deep(.y-tabs .y-tabs__content .y-tabs__track) {
+//   height: 100%;
+//   width: 100%;
+// }
+// :deep(.y-tabs .y-tabs__content .y-tabs__track .y-tab__pane--wrap) {
+//   height: 100%;
+//   width: 100%;
+// }
+</style>

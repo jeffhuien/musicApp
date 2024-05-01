@@ -50,6 +50,9 @@ importers:
       '@dcloudio/uni-quickapp-webview':
         specifier: 3.0.0-4000820240401001
         version: 3.0.0-4000820240401001(postcss@8.4.38)(rollup@3.29.4)(vue@3.4.23(typescript@4.9.5))
+      '@dcloudio/uni-ui':
+        specifier: ^1.5.5
+        version: 1.5.5
       '@uni-helper/unocss-preset-uni':
         specifier: ^0.2.8
         version: 0.2.8(@unocss/preset-mini@0.59.4)(@unocss/rule-utils@0.59.4)(@unocss/vite@0.58.9(rollup@3.29.4)(vite@4.3.5(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.3)))(typescript@4.9.5)(unocss-applet@0.7.8)(unocss@0.58.9(postcss@8.4.38)(rollup@3.29.4)(vite@4.3.5(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.3)))
@@ -868,6 +871,9 @@ packages:
 
   '@dcloudio/uni-stat@3.0.0-4000820240401001':
     resolution: {integrity: sha512-A1EvLjZUgHkWT88CPfBj7PZont7Gv+naw4hA/TB3EbEu77rKpMTMdtTMgnTOV5rS3HQ/lvKr0ETCNRCsLKdNnQ==}
+
+  '@dcloudio/uni-ui@1.5.5':
+    resolution: {integrity: sha512-DTr8o4lcRgu4JJclA2eT7UFVKtglK63OUtcDGysrSeZhgAJAC2gBYm/pYbv0BFxKqxfbdoAFGAFCigCVY9+NAQ==}
 
   '@dcloudio/vite-plugin-uni@3.0.0-4000820240401001':
     resolution: {integrity: sha512-EHL2FHU5VtFEYwLVroRMthQEEd/s6mLQ4Zd4EOKQYPtCU8rE3RXtYpL1va/U+rT6bE0UttaW6UiqY4kYaA0ZlQ==}
@@ -5963,6 +5969,8 @@ snapshots:
       - supports-color
       - ts-node
       - vue
+
+  '@dcloudio/uni-ui@1.5.5': {}
 
   '@dcloudio/vite-plugin-uni@3.0.0-4000820240401001(postcss@8.4.38)(rollup@3.29.4)(vite@4.3.5(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.3))(vue@3.4.23(typescript@4.9.5))':
     dependencies:
