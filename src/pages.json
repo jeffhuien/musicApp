@@ -18,7 +18,7 @@
         "navigationBarTitleText": "音乐小屋",
         // #ifdef APP-PLUS || H5
         "navigationStyle": "custom"
-        // #endif 
+        // #endif
       }
     },
     {
@@ -35,6 +35,33 @@
 
       "style": {
         "navigationBarTitleText": "我的",
+        // #ifdef APP-PLUS || H5
+        "navigationStyle": "custom"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/search/index",
+      "style": {
+        "navigationBarTitleText": "搜索",
+        // #ifdef APP-PLUS || H5
+        "navigationStyle": "custom"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/list/index",
+      "style": {
+        "navigationBarTitleText": "歌单",
+        // #ifdef APP-PLUS || H5
+        "navigationStyle": "custom"
+        // #endif
+      }
+    },
+    {
+      "path": "test/1",
+      "style": {
+        "navigationBarTitleText": "测试",
         // #ifdef APP-PLUS || H5
         "navigationStyle": "custom"
         // #endif

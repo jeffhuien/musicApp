@@ -1,3 +1,4 @@
+//顶部进度插件
 declare module NProgress {
   function start();
   function done();
@@ -13,7 +14,7 @@ interface PlayerOption {
   fluid?: boolean;
   definitionActive?: "click" | "hover";
 }
-
+//西瓜视频插件
 declare class Player {
   constructor(option?: PlayerOption);
   src: string;
@@ -22,6 +23,12 @@ declare class Player {
   stop(): void;
   start(url: string): void;
   emit(event: string, data: any): void;
+}
+
+declare class ColorThief {
+  constructor();
+  getColor(sourceImage: HTMLImageElement, quality?: number): { r: number; g: number; b: number };
+  getPalette(sourceImage: HTMLImageElement, colorCount?: number, quality?: number): [[number, number, number], [number, number, number]];
 }
 
 type request_params = {
@@ -35,4 +42,4 @@ type request_params = {
 // // 使用
 
 // export type G_RequestOptions = CreateOptions<request_params & UniApp.RequestOptions, "url">;
-export type G_RequestOptions = request_params & UniApp.RequestOptions;
+declare type G_RequestOptions = request_params & UniApp.RequestOptions;

@@ -18,10 +18,11 @@ export default {
     });
   },
   async get(key: string): Promise<IData | null | string | any> {
+    console.log("get");
+
     let cacheStore;
     try {
       cacheStore = await uni.getStorage({ key });
-      console.log(cacheStore);
       if (cacheStore) {
         const cache = JSON.parse(cacheStore.data) as IData;
         const expire = cache.expire;
@@ -32,7 +33,8 @@ export default {
         return cache;
       }
     } catch (error) {
-      return "";
+      console.log(error);
+      return "000";
     }
   },
   remove(key: string) {

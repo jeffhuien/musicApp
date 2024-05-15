@@ -147,7 +147,7 @@
     },
     "launch_path" : "__uniappview.html",
     "appid" : "__UNI__7376F74",
-    "versionName" : "0.1",
+    "versionName" : "5.12.08",
     "vueVersion" : "3",
     "locale" : "auto",
     "fallbackLocale" : "zh-Hans",
@@ -289,5 +289,6 @@
         "autoclose" : false,
         "waiting" : false,
         "delay" : 0
-    }
+    },
+    "versionCode" : ""
 }

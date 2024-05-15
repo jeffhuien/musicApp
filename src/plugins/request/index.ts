@@ -30,7 +30,7 @@ class GHttp {
     if (this.config?.method ?? "post" == "post") {
       this.config.header = {
         ...params.header,
-        cookie: await store.get("cookie"),
+        // cookie: await store.get("cookie"),
         "Content-Type": "application/json",
       };
     }

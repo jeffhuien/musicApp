@@ -8,4 +8,7 @@ export default defineConfig({
     // presetWind(),
     presetUno(),
   ],
+  shortcuts: {
+    center: "flex items-center justify-center",
+  },
 });

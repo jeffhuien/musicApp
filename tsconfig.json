@@ -8,7 +8,7 @@
       "#/*": ["./types/*"]
     },
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types"]
+    "types": ["@dcloudio/types"],
   },
   "include": [
     //
