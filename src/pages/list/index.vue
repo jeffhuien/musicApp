@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { listInfo } from "#/index";
 import { ListApi } from "@/Api";
+// import ColorThief from "ColorThief";
 let id = ref("0");
 
-const colorThief = new ColorThief();
-const mainColor = ref<string>();
-const secColor = ref<string>();
+// const colorThief = new ColorThief();
+// const mainColor = ref<string>();
+// const secColor = ref<string>();
 let bgStr = ref<string>();
 let data = ref();
 let info = ref<any>();
@@ -15,7 +16,23 @@ let fatherRef = ref<any>();
 let op = ref(1);
 let head = ref();
 let title = ref();
+
 let scrollOk = ref(false);
+
+// onMounted(() => {
+//   console.log("123");
+//   const query = uni.createSelectorQuery();
+//   // 通过选择器指定要获取的元素，这里假设获取 id 为 'bg' 的元素
+//   query
+//     .select("#bg")
+//     .boundingClientRect(data => {
+//       // 在回调函数中可以获取到元素的位置和尺寸信息，包括高度
+//       if (data) {
+//         console.log("元素高度为：", data.height);
+//       }
+//     })
+//     .exec();
+// });
 
 onLoad(async (option: any) => {
   console.log(option);
@@ -56,32 +73,72 @@ onLoad(async (option: any) => {
     },
   };
 
-  const img = new Image();
-  img.crossOrigin = "";
-  img.src = infoData.value.img;
-  img.onload = () => {
-    let color = colorThief.getPalette(img, 3);
-    mainColor.value = `rgb(${color[0][0]}, ${color[0][1]}, ${color[0][2]})`;
-    secColor.value = `rgb(${color[1][0]}, ${color[1][1]}, ${color[1][2]})`;
-    bgStr.value = `linear-gradient(to left top, ${mainColor.value} 40%, ${secColor.value})`;
-  };
+  // uni.getImageInfo({
+  //   src: infoData.value.img,
+  //   crossOrigin: "",
+  //   success: function (image) {
+  //     console.log(colorThief);
+
+  //     console.log(image);
+  //     console.log(image.height);
+  //     var contentWidth = image.width;
+  //     var contentHeight = image.height;
+  //     console.log(image);
+
+  //     let color = colorThief.getPalette(image, 3);
+  //     mainColor.value = `rgb(${color[0][0]}, ${color[0][1]}, ${color[0][2]})`;
+  //     secColor.value = `rgb(${color[1][0]}, ${color[1][1]}, ${color[1][2]})`;
+  //     bgStr.value = `linear-gradient(to left top, ${mainColor.value} 40%, ${secColor.value})`;
+  //   },
+  // });
+  // const query = uni.createSelectorQuery();
+  // // 通过选择器指定要获取的元素，这里假设获取 id 为 'bg' 的元素
+  // query
+  //   .select("#bg")
+  //   .boundingClientRect(data => {
+  //     // 在回调函数中可以获取到元素的位置和尺寸信息，包括高度
+  //     if (data) {
+  //       console.log("元素高度为：", data.height);
+  //     }
+  //   })
+  //   .exec();
+
+  // const img = new Image();
+  // img.crossOrigin = "";
+  // img.src = infoData.value.img;
+  // img.onload = () => {
+  //   let color = colorThief.getPalette(img, 3);
+  //   mainColor.value = `rgb(${color[0][0]}, ${color[0][1]}, ${color[0][2]})`;
+  //   secColor.value = `rgb(${color[1][0]}, ${color[1][1]}, ${color[1][2]})`;
+  //   bgStr.value = `linear-gradient(to left top, ${mainColor.value} 40%, ${secColor.value})`;
+  // }
 });
 
 function father(a: { detail: { scrollTop: number } }) {
+  console.log(head.value);
+
   // console.log("滑动", a.detail.scrollTop, "fac", father_c.value, "sok", scrollOk.value);
-  if (a.detail.scrollTop > head.value.$el?.offsetHeight + 8) {
+  if (a.detail.scrollTop > 400 + 8) {
+    // head.value.$el?.offsetHeight
     op.value = 0;
     scrollOk.value = true;
   } else {
-    op.value = 1 - a.detail.scrollTop / head.value?.$el?.offsetHeight;
+    op.value = 1 - a.detail.scrollTop / 400;
     scrollOk.value = false;
     console.log("op", op.value);
   }
 
   if (op.value < 0.5) {
     title.value = infoData.value?.name;
+
+    uni.setNavigationBarTitle({
+      title: title.value,
+    });
   } else {
     title.value = "歌单";
+    uni.setNavigationBarTitle({
+      title: title.value,
+    });
   }
 }
 
@@ -96,8 +153,7 @@ const back = () => {
   <view v-if="infoData">
     <view class="absolute size-[112%] box-border fixed -left-10 -top-2 blur-sm overflow-hidden" :style="{ background: bgStr }"></view>
     <scroll-view :scroll-y="true" ref="fatherRef" scroll-with-animation="true" @scroll="father" class="absolute box-border overscroll-contain h-full w-full top-0 z-50 transition-all">
-      <uni-nav-bar @clickLeft="back" :fixed="true" :border="false" :backgroundColor="scrollOk ? '#fff' : '#00000000'" color="#000" left-text="返回" right-text="设置" :title="title"> </uni-nav-bar>
-      <view ref="head" :style="{ opacity: op }">
+      <view ref="head" id="bg" :style="{ opacity: op }">
         <view class="flex gap-3 pt-4">
           <view class="w-1/4 shrink-0">
             <g-card :img="infoData?.img" :count="infoData?.playCount"></g-card>
@@ -137,7 +193,7 @@ const back = () => {
       </view>
 
       <view class="box-border h-[calc(100%-44px)] rounded-t-xl">
-        <view class="p-1 mt-1 rounded-t-xl py-2 bg-white dark:bg-slate/20 z-50" :class="op <= 0 ? ' top-[38px] fixed w-full py-3' : ''">
+        <view class="p-1 rounded-t-xl py-2 bg-white dark:bg-slate/20 z-50" :class="op <= 0 ? ' top-[0px] fixed w-full py-3' : ''">
           <view>
             <view class="iconfont inline-block text-white bg-sky b b-solid p-1 rounded-full scale-80">&#xe68d;</view>播放全部
 

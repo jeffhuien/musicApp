@@ -25,10 +25,16 @@ declare class Player {
   emit(event: string, data: any): void;
 }
 
-declare class ColorThief {
-  constructor();
-  getColor(sourceImage: HTMLImageElement, quality?: number): { r: number; g: number; b: number };
-  getPalette(sourceImage: HTMLImageElement, colorCount?: number, quality?: number): [[number, number, number], [number, number, number]];
+// declare module "ColorThief" {}
+//   export function getColor(sourceImage: HTMLImageElement, quality?: number): { r: number; g: number; b: number };
+//   export function getPalette(sourceImage: HTMLImageElement, colorCount?: number, quality?: number): [[number, number, number], [number, number, number]];
+// }
+
+declare module "ColorThief" {
+  // declare class ColorThief {
+  // constructor();
+  function getColor(sourceImage: HTMLImageElement, quality?: number): { r: number; g: number; b: number };
+  function getPalette(sourceImage: HTMLImageElement, colorCount?: number, quality?: number): [[number, number, number], [number, number, number]];
 }
 
 type request_params = {

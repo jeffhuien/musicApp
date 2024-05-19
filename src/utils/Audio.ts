@@ -1,9 +1,9 @@
 import { playControl, playList } from "@/stores";
 let times = 5;
 class Music {
-  private audio: UniApp.InnerAudioContext;
+  private audio: UniApp.BackgroundAudioManager;
   constructor() {
-    this.audio = uni.createInnerAudioContext();
+    this.audio = uni.getBackgroundAudioManager();
   }
 
   async play(url: string): Promise<void> {
@@ -50,7 +50,7 @@ class Music {
   }
 
   setVolume(volume: number): void {
-    this.audio.volume = volume;
+    // this.audio.volume = volume;
   }
 
   setMuted() {

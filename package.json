@@ -57,6 +57,7 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-4000820240401001",
     "@dcloudio/uni-ui": "^1.5.5",
     "@uni-helper/unocss-preset-uni": "^0.2.8",
+    "colorthief": "^2.4.0",
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
     "pinia": "2.0.36",
